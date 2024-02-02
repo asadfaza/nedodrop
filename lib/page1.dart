@@ -16,78 +16,62 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBar(
+        actions: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () => Navigator.push(
+                          context,
+                          FadePageRoute(
+                              builder: (context) => const History())),
+                      icon: Icon(Icons.history),
+                      color: Colors.white,
+                    ),
+                    IconButton(
+                      onPressed: () => Navigator.push(
+                          context,
+                          FadePageRoute(
+                              builder: (context) => const settings())),
+                      icon: Icon(Icons.settings),
+                      color: Colors.white,
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ],
+        leading: IconButton(
+          onPressed: () {},
+          icon: SvgPicture.asset(
+            'assets/icon.svg',
+          ),
+        ),
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
+        title: Text(
+        preferences.getName()!,
+        style: TextStyle(color: Colors.white, fontSize: 20),
+      ),),
       body: Container(
         margin: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  child: Column(
+        child: Container(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Row(children: [
-                        SvgPicture.asset(
-                          'assets/icon.svg',
-                          height: 30,
-                        ),
-                        SizedBox(width: 20),
-                        Text(
-                          preferences.getName()!,
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ]),
-                    ],
-                  ),
-                ),
-                Container(
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () => Navigator.push(
-                            context,
-                            FadePageRoute(
-                                builder: (context) => const History())),
-                        icon: Icon(Icons.history),
-                        color: Colors.white,
-                      ),
-                      IconButton(
-                        onPressed: () => Navigator.push(
-                            context,
-                            FadePageRoute(
-                                builder: (context) => const settings())),
-                        icon: Icon(Icons.settings),
-                        color: Colors.white,
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Container(
-                margin: EdgeInsets.all(50),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        SizedBox(
-                          width: 30,
-                        ),
-                        SizedBox(
-                          width: 30,
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: FocusableActionDetector(
-                            onShowHoverHighlight: (value) {
-                              setState(() {
-                                color1 = (!value) ? Colors.white : Colors.blue;
-                              });
-                            },
+                      Container(
+                        width: screenSize.width * 0.7,
+                          child: Expanded(
                             child: SvgPicture.asset(
                               'assets/drag-n-drop-element.svg',
                               height: 300,
@@ -95,14 +79,8 @@ class _FirstPageState extends State<FirstPage> {
                             ),
                           ),
                         ),
-                        arrowForward(secSize: 45, size: 17, onPressed: () {}),
-                        SizedBox(
-                          width: 10,
-                        ),
+                        arrowForward(secSize: 30, size: 17, onPressed: () {}),
                       ],
-                    ),
-                    SizedBox(
-                      height: 20,
                     ),
                     Text(
                       'Choose files or Drag and Drop it here',
@@ -112,8 +90,6 @@ class _FirstPageState extends State<FirstPage> {
                     )
                   ],
                 )),
-          ],
-        ),
       ),
     );
   }

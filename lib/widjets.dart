@@ -26,19 +26,15 @@ class FadePageRoute<T> extends MaterialPageRoute<T> {
 
 Widget arrowForward(
         {required onPressed, required double size, required double secSize, bool isBack = false}) =>
-    Container(
-      height: secSize,
-      child: FloatingActionButton(
+    FloatingActionButton(
+        shape: CircleBorder(),
         onPressed: onPressed,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        child: Center(
-          child: Icon(
-            isBack ? Icons.arrow_back_ios : Icons.arrow_forward_ios,
-            size: size,
-          ),
+        child: Icon(
+          isBack ? Icons.arrow_back_ios : Icons.arrow_forward_ios,
+          size: size,
         ),
-      ),
     );
 
 InputDecoration textFieldDesign({required error, required String text}) =>

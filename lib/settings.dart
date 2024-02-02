@@ -13,12 +13,12 @@ class _settingsState extends State<settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Container(
-          padding: EdgeInsets.only(left: 19, top: 20),
-          child: arrowForward(
+        leading: IconButton(
+          onPressed: () {},
+          icon: arrowForward(
               onPressed: () => Navigator.pop(context),
               size: 15,
-              secSize: 50,
+              secSize: 30,
               isBack: true),
         ),
         elevation: 0,
