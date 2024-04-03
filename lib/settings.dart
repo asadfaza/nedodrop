@@ -14,6 +14,7 @@ class _settingsState extends State<settings> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
+          splashRadius: 5,
           onPressed: () {},
           icon: arrowForward(
               onPressed: () => Navigator.pop(context),

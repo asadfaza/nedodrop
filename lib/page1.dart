@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nedodrop/game.dart';
 import 'package:nedodrop/history.dart';
 import 'package:nedodrop/settings.dart';
 import 'package:nedodrop/widjets.dart';
@@ -79,7 +80,10 @@ class _FirstPageState extends State<FirstPage> {
                             ),
                           ),
                         ),
-                        arrowForward(secSize: 30, size: 17, onPressed: () {}),
+                        arrowForward(secSize: 30, size: 17, onPressed: () => Navigator.push(
+                            context,
+                            FadePageRoute(
+                                builder: (context) => const gameXO()))),
                       ],
                     ),
                     Text(
